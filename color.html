@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Color Picker</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .colorContainer {
+                width: 100%;
+                height: 200px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 50px;
+            }
+
+            .colorElement {
+                width: 200px;
+                height: 200px;
+                display: flex;
+                /* border: 2px solid black; */
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+            }
+
+            #button {
+                width: 200px;
+                height: 50px;
+                /* border: 2px solid black; */
+                margin: auto;
+                margin-top: 50px;
+                /* text-align: center; */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(180, 180, 180);
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="colorContainer">
+            <div class="colorElement" id="redElement"></div>
+            <div class="colorElement" id="greenElement"></div>
+            <div class="colorElement" id="blueElement"></div>
+            <div class="colorElement" id="combination"></div>
+        </div>
+        <div id="button">Generate Random Color</div>
+
+        <script>
+            let button = document.getElementById("button");
+            let redElement = document.getElementById("redElement");
+            let greenElement = document.getElementById("greenElement");
+            let blueElement = document.getElementById("blueElement");
+            let combination = document.getElementById("combination");
+
+            button.addEventListener("click", function (){
+                let red = Math.floor(Math.random() * 255);
+                let green = Math.floor(Math.random() * 255);
+                let blue = Math.floor(Math.random() * 255);
+                let redCode = `rgb(${red}, 0, 0)`;
+                let greenCode = `rgb(0, ${green}, 0)`;
+                let blueCode = `rgb(0, 0, ${blue})`;
+                redElement.style.backgroundColor = redCode;
+                greenElement.style.backgroundColor = greenCode;
+                blueElement.style.backgroundColor = blueCode;
+                combination.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+                redElement.innerHTML = "Red = " + red;
+                greenElement.innerHTML = "Green = " + green;
+                blueElement.innerHTML = "Blue = " + blue;
+                combination.innerHTML = `rgb(${red}, ${green}, ${blue})`;
+            });
+        </script>
+    </body>
+</html>
