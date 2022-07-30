@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clock</title>
+        <style>
+            .wrapper {
+                width: 600px;
+                height: 300px;
+                display: flex;
+                margin: auto;
+                margin-top: 50px;
+                background-color: black;
+                border-radius: 50px;
+            }
+
+            .hours_wrapper {
+                width: 225px;
+                height: 200px;
+                margin-top: 50px;
+                display: flex;
+                margin-left: 25px;
+            }
+
+            .colon {
+                width: 100px;
+                height: 200px;
+                margin-top: 50px;
+            }
+
+            .topColon {
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                margin: auto;
+                margin-top: 25px;
+                border-radius: 20%;
+            }
+
+            .bottomColon {
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                margin: auto;
+                margin-top: 50px;
+                border-radius: 20%;
+            }
+
+            .minutes_wrapper {
+                width: 225px;
+                height: 200px;
+                margin-top: 50px;
+                display: flex;
+            }
+
+            .hours_tens {
+                width: 100px;
+                height: 200px;
+            }
+
+            .hours_ones {
+                width: 100px;
+                height: 200px;
+                margin-left: 25px;
+            }
+
+            .minutes_tens {
+                width: 100px;
+                height: 200px;
+            }
+
+            .minutes_ones {
+                width: 100px;
+                height: 200px;
+                margin-left: 25px;
+            }
+
+            .top {
+                width: 100px;
+                height: 95px;
+                display: flex;
+            }
+
+            .top1 {
+                width: 10px;
+                height: 85px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
+            .top2 {
+                width: 80px;
+                height: 10px;
+                border-radius: 5px;
+            }
+
+            .top3 {
+                width: 10px;
+                height: 85px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
+            .bottom {
+                width: 100px;
+                height: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .bottom_Cell {
+                width: 80px;
+                height: 10px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="hours_wrapper">
+                <div class="hours_tens">
+                    <div class="top">
+                        <div class="top1" id="seg1"></div>
+                        <div class="top2" id="seg2"></div>
+                        <div class="top3" id="seg3"></div>
+                    </div>
+                    <div class="top">
+                        <div class="top1" id="seg4"></div>
+                        <div class="top2" id="seg5"></div>
+                        <div class="top3" id="seg6"></div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom_Cell" id="seg7"></div>
+                    </div>
+                </div>
+                <div class="hours_ones">
+                    <div class="top">
+                        <div class="top1" id="seg8"></div>
+                        <div class="top2" id="seg9"></div>
+                        <div class="top3" id="seg10"></div>
+                    </div>
+                    <div class="top">
+                        <div class="top1" id="seg11"></div>
+                        <div class="top2" id="seg12"></div>
+                        <div class="top3" id="seg13"></div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom_Cell" id="seg14"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="colon">
+                <div class="topColon"></div>
+                <div class="bottomColon"></div>
+            </div>
+            <div class="minutes_wrapper">
+                <div class="minutes_tens">
+                    <div class="top">
+                        <div class="top1" id="seg15"></div>
+                        <div class="top2" id="seg16"></div>
+                        <div class="top3" id="seg17"></div>
+                    </div>
+                    <div class="top">
+                        <div class="top1" id="seg18"></div>
+                        <div class="top2" id="seg19"></div>
+                        <div class="top3" id="seg20"></div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom_Cell" id="seg21"></div>
+                    </div>
+                </div>
+                <div class="minutes_ones">
+                    <div class="top">
+                        <div class="top1" id="seg22"></div>
+                        <div class="top2" id="seg23"></div>
+                        <div class="top3" id="seg24"></div>
+                    </div>
+                    <div class="top">
+                        <div class="top1" id="seg25"></div>
+                        <div class="top2" id="seg26"></div>
+                        <div class="top3" id="seg27"></div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom_Cell" id="seg28"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            let hours_tens_segments = [
+                document.getElementById("seg1"),
+                document.getElementById("seg2"),
+                document.getElementById("seg3"),
+                document.getElementById("seg4"),
+                document.getElementById("seg5"),
+                document.getElementById("seg6"),
+                document.getElementById("seg7")
+            ];
+
+            let hours_ones_segments = [
+                document.getElementById("seg8"),
+                document.getElementById("seg9"),
+                document.getElementById("seg10"),
+                document.getElementById("seg11"),
+                document.getElementById("seg12"),
+                document.getElementById("seg13"),
+                document.getElementById("seg14")
+            ];
+
+            let minutes_tens_segemnts = [
+                document.getElementById("seg15"),
+                document.getElementById("seg16"),
+                document.getElementById("seg17"),
+                document.getElementById("seg18"),
+                document.getElementById("seg19"),
+                document.getElementById("seg20"),
+                document.getElementById("seg21")
+            ];
+
+            let minutes_ones_segments = [
+                document.getElementById("seg22"),
+                document.getElementById("seg23"),
+                document.getElementById("seg24"),
+                document.getElementById("seg25"),
+                document.getElementById("seg26"),
+                document.getElementById("seg27"),
+                document.getElementById("seg28"),
+            ];
+
+            let hours = 0;
+            let minutes = 0;
+
+            setInterval(function () {
+                for (let i = 0; i <= 6; i++) {
+                    hours_tens_segments[i].style.backgroundColor = "rgba(100, 100, 100, 0.5)";
+                    hours_ones_segments[i].style.backgroundColor = "rgba(100, 100, 100, 0.5)";
+                    minutes_tens_segemnts[i].style.backgroundColor = "rgba(100, 100, 100, 0.5)";
+                    minutes_ones_segments[i].style.backgroundColor = "rgba(100, 100, 100, 0.5)";
+                }
+                hours = new Date().getHours();
+                minutes = new Date().getMinutes();
+                updateHours(hours);
+                updateMinutes(minutes);
+                console.log(minutes);
+            }, 1000);
+
+            function updateHours (hour) {
+                if (hour == 0) {
+                    hour = 12;
+                } else if (hour > 12) {
+                    hour -= 12;
+                }
+                if (hour < 10) {
+                    hours_tens_segments[0].style.backgroundColor = "red";
+                    hours_tens_segments[1].style.backgroundColor = "red";
+                    hours_tens_segments[2].style.backgroundColor = "red";
+                    hours_tens_segments[3].style.backgroundColor = "red";
+                    hours_tens_segments[5].style.backgroundColor = "red";
+                    hours_tens_segments[6].style.backgroundColor = "red";
+
+                    switch (hour) {
+                        case 1:
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            break;
+                        case 2:
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[3].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;
+                        case 3:
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;
+                        case 4:
+                            hours_ones_segments[0].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            break;
+                        case 5: 
+                            hours_ones_segments[0].style.backgroundColor = "red";
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;
+                        case 6:
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[0].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[3].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;
+                        case 7:
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            break;
+                        case 8:
+                            for (let i = 0; i <= 6; i++) {
+                                hours_ones_segments[i].style.backgroundColor = "red";
+                            }
+                            break;
+                        case 9: 
+                            hours_ones_segments[0].style.backgroundColor = "red";
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;                      
+                    }
+                } else {
+                    hours_tens_segments[2].style.backgroundColor = "red";
+                    hours_tens_segments[5].style.backgroundColor = "red";
+
+                    switch (hour) {
+                        case 10:
+                            hours_ones_segments[0].style.backgroundColor = "red";
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[3].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;
+                        case 11:
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[5].style.backgroundColor = "red";
+                            break;
+                        case 12:
+                            hours_ones_segments[1].style.backgroundColor = "red";
+                            hours_ones_segments[2].style.backgroundColor = "red";
+                            hours_ones_segments[4].style.backgroundColor = "red";
+                            hours_ones_segments[3].style.backgroundColor = "red";
+                            hours_ones_segments[6].style.backgroundColor = "red";
+                            break;
+                    }
+                }
+            }
+
+            function updateMinutes(minute) {
+                if (minute < 10) {
+                    minutes_tens_segemnts[0].style.backgroundColor = "red";
+                    minutes_tens_segemnts[1].style.backgroundColor = "red";
+                    minutes_tens_segemnts[2].style.backgroundColor = "red";
+                    minutes_tens_segemnts[3].style.backgroundColor = "red";
+                    minutes_tens_segemnts[5].style.backgroundColor = "red";
+                    minutes_tens_segemnts[6].style.backgroundColor = "red";
+
+                    updateMinutesOnes(minute);
+                } else if (minute >= 10 && minute < 20) {
+                    minutes_tens_segemnts[2].style.backgroundColor = "red";
+                    minutes_tens_segemnts[5].style.backgroundColor = "red";
+
+                    minute -= 10;
+                    updateMinutesOnes(minute);
+                } else if (minute >= 20 && minute < 30) {
+                    minutes_tens_segemnts[1].style.backgroundColor = "red";
+                    minutes_tens_segemnts[2].style.backgroundColor = "red";
+                    minutes_tens_segemnts[4].style.backgroundColor = "red";
+                    minutes_tens_segemnts[3].style.backgroundColor = "red";
+                    minutes_tens_segemnts[6].style.backgroundColor = "red";
+
+                    minute -= 20;
+                    updateMinutesOnes(minute);
+                } else if (minute >= 30 && minute < 40) {
+                    minutes_tens_segemnts[1].style.backgroundColor = "red";
+                    minutes_tens_segemnts[2].style.backgroundColor = "red";
+                    minutes_tens_segemnts[4].style.backgroundColor = "red";
+                    minutes_tens_segemnts[5].style.backgroundColor = "red";
+                    minutes_tens_segemnts[6].style.backgroundColor = "red";
+
+                    minute -= 30;
+                    updateMinutesOnes(minute);
+                } else if (minute >= 40 && minute < 50) {
+                    minutes_tens_segemnts[0].style.backgroundColor = "red";
+                    minutes_tens_segemnts[2].style.backgroundColor = "red";
+                    minutes_tens_segemnts[4].style.backgroundColor = "red";
+                    minutes_tens_segemnts[5].style.backgroundColor = "red";
+
+                    minute -= 40;
+                    updateMinutesOnes(minute);
+                } else {
+                    minutes_tens_segemnts[1].style.backgroundColor = "red";
+                    minutes_tens_segemnts[0].style.backgroundColor = "red";
+                    minutes_tens_segemnts[4].style.backgroundColor = "red";
+                    minutes_tens_segemnts[5].style.backgroundColor = "red";
+                    minutes_tens_segemnts[6].style.backgroundColor = "red";
+
+                    minute -= 50;
+                    updateMinutesOnes(minute);
+                }
+            }
+
+            function updateMinutesOnes(minute) {
+                switch (minute) {
+                    case 0:
+                        minutes_ones_segments[0].style.backgroundColor = "red";
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[3].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        minutes_ones_segments[6].style.backgroundColor = "red";
+                        break;
+                    case 1:
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        break;
+                    case 2:
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[4].style.backgroundColor = "red";
+                        minutes_ones_segments[3].style.backgroundColor = "red";
+                        minutes_ones_segments[6].style.backgroundColor = "red";
+                        break;
+                    case 3:
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[4].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        minutes_ones_segments[6].style.backgroundColor = "red";
+                        break;
+                    case 4:
+                        minutes_ones_segments[0].style.backgroundColor = "red";
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[4].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        break;
+                    case 5: 
+                        minutes_ones_segments[0].style.backgroundColor = "red";
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[4].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        minutes_ones_segments[6].style.backgroundColor = "red";
+                        break;
+                    case 6:
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[0].style.backgroundColor = "red";
+                        minutes_ones_segments[4].style.backgroundColor = "red";
+                        minutes_ones_segments[3].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        minutes_ones_segments[6].style.backgroundColor = "red";
+                        break;
+                    case 7:
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        break;
+                    case 8:
+                        for (let i = 0; i <= 6; i++) {
+                            minutes_ones_segments[i].style.backgroundColor = "red";
+                        }
+                        break;
+                    case 9: 
+                        minutes_ones_segments[0].style.backgroundColor = "red";
+                        minutes_ones_segments[1].style.backgroundColor = "red";
+                        minutes_ones_segments[2].style.backgroundColor = "red";
+                        minutes_ones_segments[4].style.backgroundColor = "red";
+                        minutes_ones_segments[5].style.backgroundColor = "red";
+                        minutes_ones_segments[6].style.backgroundColor = "red";
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>
